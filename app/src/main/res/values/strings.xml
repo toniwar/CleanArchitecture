@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Clean Architecture</string>
+    <string name="noData">No data</string>
+    <string name="getData">Get data</string>
+    <string name="putData">Put data here</string>
+    <string name="saveData">Save data</string>
+</resources>
