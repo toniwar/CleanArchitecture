@@ -8,12 +8,14 @@ import android.widget.EditText
 import android.widget.TextView
 import toniwar.projects.cleanarchitecture.R
 import toniwar.projects.cleanarchitecture.data.repository.UserRepositoryImplementation
+import toniwar.projects.cleanarchitecture.data.storage.SharedPrefsUserStorage
 import toniwar.projects.cleanarchitecture.domain.models.SaveUserName
 import toniwar.projects.cleanarchitecture.domain.usecases.GetUserNameUseCase
 import toniwar.projects.cleanarchitecture.domain.usecases.SaveUserNameUseCase
 
 class MainActivity : AppCompatActivity() {
-    private val userRepository by lazy(LazyThreadSafetyMode.NONE) {UserRepositoryImplementation(applicationContext)}
+    private val userStorage by  lazy { SharedPrefsUserStorage(applicationContext) }
+    private val userRepository by lazy(LazyThreadSafetyMode.NONE) {UserRepositoryImplementation(userStorage)}
     private val getUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {GetUserNameUseCase(userRepository)}
     private val saveUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {SaveUserNameUseCase(userRepository)}
 
